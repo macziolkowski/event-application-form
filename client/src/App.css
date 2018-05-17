@@ -1,0 +1,13 @@
+.layout {
+  margin: 30px;
+}
+
+.user-list-item {
+    margin: 0px;
+    padding: 0px;
+}
+
+.user-list-item span {
+    display: inline;
+    margin-left: 20px;
+}
