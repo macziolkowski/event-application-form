@@ -37,16 +37,22 @@ class ApplicationForm extends Component {
         ])
 
         this.state = {
-            submission: {}
+            submission: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                date: '',
+                validation: this.validator.valid()
+            }
         }
+
+        this.submitted = false;
     }
 
     componentDidMount() {}
 
     updateSubmission(event) {
         let updatedSubmission = Object.assign({}, this.state.submission);
-
-        console.log(this.state.submission);
 
         updatedSubmission[event.target.id] = event.target.value;
         this.setState({
@@ -57,12 +63,14 @@ class ApplicationForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault(); // Do I need this?
 
-        const validation = this.validator.validate(this.submission);
+        const validation = this.validator.validate(this.state.submission);
         this.setState({validation});
         this.submitted = true;
 
+        console.log(validation);
+
         if (validation.isValid) {
-            this.submitSubmission.bind(this); // Bug ?
+            this.submitSubmission(); // Bug ?
         }
     }
 
@@ -72,42 +80,53 @@ class ApplicationForm extends Component {
     }
 
     render () {
+        let validation = this.submitted ?
+                        this.validator.validate(this.state.submission) :
+                        this.state.submission.validation
+
         return (
             <form className='application-form'>
                 <div>
                     <label htmlFor="firstName">First name</label>
                     <input type="text"
                         id="firstName"
+                        name="firstName"
                         placeholder="First name"
                         onChange={this.updateSubmission.bind(this)}
                     />
+                    <span>{validation.firstName.message}</span>
                 </div>
                 <div>
                     <label htmlFor="lastName">Last name</label>
                     <input type="text"
                         id="lastName"
+                        name="lastName"
                         placeholder="Last name"
                         onChange={this.updateSubmission.bind(this)}
                     />
+                    <span>{validation.lastName.message}</span>
                 </div>
                 <div>
                     <label htmlFor="email">E-mail</label>
                     <input type="email"
                         onChange={this.updateSubmission.bind(this)}
                         id="email"
+                        name="email"
                         placeholder="E-mail"
                     />
+                    <span>{validation.email.message}</span>
                 </div>
                 <div>
                     <label htmlFor="date">Date</label>
                     <input type="date"
                         id="date"
+                        name="date"
                         placeholder="E-mail"
                         onChange={this.updateSubmission.bind(this)}
                     />
                 </div>
 
-                <button onClick={this.submitSubmission.bind(this)}>
+                <button onClick={this.handleFormSubmit}>
                     Submit
                 </button>
             </form>

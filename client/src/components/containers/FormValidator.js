@@ -16,14 +16,16 @@ class FormValidator {
                 const validation_method =
                     typeof rule.method === 'string' ?
                     validator[rule.method] :
-                    rule.method;
+                    rule.method
 
-                if (validation_method(field_value, ...args, state) !== rule.validWhen) {
-                    validation[rule.field] = {isInvalid: true, message: rule.message};
+                if(validation_method(field_value, ...args, state) !== rule.validWhen) {
+                    validation[rule.field] = { isInvalid: true, message: rule.message }
                     validation.isValid = false;
                 }
             }
         })
+
+        return validation;
     }
 
     valid() {

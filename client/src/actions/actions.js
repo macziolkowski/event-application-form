@@ -12,7 +12,6 @@ export function fetchUsers() {
         return fetch('/users')
         .then( (response) => response.json())
         .then( (data) => {
-            console.log(data);
             dispatch(usersReceived(data.data));
         })
         .catch( (e) => console.log(e))
