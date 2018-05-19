@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {submitUser} from '../../actions/actions';
 import {withRouter} from 'react-router-dom';
 import FormValidator from './FormValidator';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 class ApplicationForm extends Component {
 
@@ -60,8 +62,17 @@ class ApplicationForm extends Component {
         })
     }
 
+    handleDayChange(day) {
+        console.log(day);
+        this.setState({
+            submission: Object.assign({}, this.state.submission, {date : day})
+        });
+
+        console.log(this.state.submission);
+    }
+
     handleFormSubmit = event => {
-        event.preventDefault(); // Do I need this?
+        event.preventDefault();
 
         const validation = this.validator.validate(this.state.submission);
         this.setState({validation});
@@ -70,7 +81,7 @@ class ApplicationForm extends Component {
         console.log(validation);
 
         if (validation.isValid) {
-            this.submitSubmission(); // Bug ?
+            this.submitSubmission();
         }
     }
 
@@ -86,8 +97,8 @@ class ApplicationForm extends Component {
 
         return (
             <nav className="navbar navbar-light pt-4 border-bottom bg-light">
-                <div class="container">
-                    <a class="navbar-brand text-primary">Registration</a>
+                <div className="container">
+                    <a className="navbar-brand text-primary">Registration</a>
                     <form className="form-inline">
                         <div className='mr-sm-2'>
                             <input type="text"
@@ -126,13 +137,7 @@ class ApplicationForm extends Component {
                             </small>
                         </div>
                         <div className='mr-sm-2'>
-                            <input type="date"
-                                id="date"
-                                name="date"
-                                className="form-control"
-                                placeholder="E-mail"
-                                onChange={this.updateSubmission.bind(this)}
-                            />
+                            <DayPickerInput onDayChange={this.handleDayChange.bind(this)}/>
                             <small className="form-text text-danger alert-box">
                             </small>
                         </div>

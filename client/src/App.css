@@ -1,3 +1,14 @@
 .alert-box {
-    height: 19px; 
+    height: 19px;
+}
+
+.DayPickerInput input {
+    font-size: 16px;
+    line-height: 26px;
+    color: #495057;
+    background-color: #fff;
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-clip: padding-box;
 }
