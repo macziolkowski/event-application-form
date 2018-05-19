@@ -12,18 +12,25 @@ class List extends Component {
     render () {
 
         const userItems = this.props.users.map( (users, i) => {
-            return (<li key={i}><UserListItem data={users}/></li>)
+            return (<UserListItem key={i} data={users}/>)
         });
 
         return (
             <div>
-                <div>
-                    <h3>Participants</h3>
-                </div>
-                <ul>
-                    {(this.props.users.length > 0) ? <ul>{userItems}</ul>
-                    : <div>There are no participants enrolled</div>}
-                </ul>
+                <table className="table table-striped">
+                    <thead className="bg-primary text-light">
+                        <tr>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Registration date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {(this.props.users.length > 0) ? userItems
+                        : <tr><td>There are no participants enrolled</td></tr>}
+                    </tbody>
+                </table>
             </div>
         )
     }

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 class UserListItem extends Component {
     render () {
         return (
-            <div className='user-list-item'>
-                <span>{this.props.data.firstName}</span>
-                <span>{this.props.data.lastName}</span>
-                <span>{this.props.data.email}</span>
-                <span>{this.props.data.date}</span>
-            </div>
+            <tr>
+                <td>{this.props.data.firstName}</td>
+                <td>{this.props.data.lastName}</td>
+                <td>{this.props.data.email}</td>
+                <td>{this.props.data.date}</td>
+            </tr>
         )
     }
 }

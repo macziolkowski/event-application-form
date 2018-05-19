@@ -5,9 +5,15 @@ import List from '../containers/List';
 class Layout extends Component {
     render() {
         return (
-            <div className='layout'>
-                <ApplicationForm></ApplicationForm>
-                <List></List>
+            <div>
+                <div className="sticky-top">
+                    <ApplicationForm></ApplicationForm>
+                </div>
+                <div className='container'>                    
+                    <div className="d-flex justify-content-center mt-4">
+                        <List></List>
+                    </div>
+                </div>
             </div>
         )
     }

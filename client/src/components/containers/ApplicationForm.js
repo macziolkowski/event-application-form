@@ -85,51 +85,63 @@ class ApplicationForm extends Component {
                         this.state.submission.validation
 
         return (
-            <form className='application-form'>
-                <div>
-                    <label htmlFor="firstName">First name</label>
-                    <input type="text"
-                        id="firstName"
-                        name="firstName"
-                        placeholder="First name"
-                        onChange={this.updateSubmission.bind(this)}
-                    />
-                    <span>{validation.firstName.message}</span>
+            <nav className="navbar navbar-light pt-4 border-bottom bg-light">
+                <div class="container">
+                    <a class="navbar-brand text-primary">Registration</a>
+                    <form className="form-inline">
+                        <div className='mr-sm-2'>
+                            <input type="text"
+                                id="firstName"
+                                name="firstName"
+                                className="form-control"
+                                placeholder="First name"
+                                onChange={this.updateSubmission.bind(this)}
+                            />
+                            <small className="form-text text-danger alert-box">
+                                {validation.firstName.message}
+                            </small>
+                        </div>
+                        <div className='mr-sm-2'>
+                            <input type="text"
+                                id="lastName"
+                                name="lastName"
+                                className="form-control"
+                                placeholder="Last name"
+                                onChange={this.updateSubmission.bind(this)}
+                            />
+                            <small className="form-text text-danger alert-box">
+                                {validation.lastName.message}
+                            </small>
+                        </div>
+                        <div className='mr-sm-2'>
+                            <input type="email"
+                                onChange={this.updateSubmission.bind(this)}
+                                id="email"
+                                name="email"
+                                className="form-control"
+                                placeholder="E-mail"
+                            />
+                            <small className="form-text text-danger alert-box">
+                                {validation.email.message}
+                            </small>
+                        </div>
+                        <div className='mr-sm-2'>
+                            <input type="date"
+                                id="date"
+                                name="date"
+                                className="form-control"
+                                placeholder="E-mail"
+                                onChange={this.updateSubmission.bind(this)}
+                            />
+                            <small className="form-text text-danger alert-box">
+                            </small>
+                        </div>
+                        <button className="btn btn-outline-primary" onClick={this.handleFormSubmit}>
+                            Submit
+                        </button>
+                    </form>
                 </div>
-                <div>
-                    <label htmlFor="lastName">Last name</label>
-                    <input type="text"
-                        id="lastName"
-                        name="lastName"
-                        placeholder="Last name"
-                        onChange={this.updateSubmission.bind(this)}
-                    />
-                    <span>{validation.lastName.message}</span>
-                </div>
-                <div>
-                    <label htmlFor="email">E-mail</label>
-                    <input type="email"
-                        onChange={this.updateSubmission.bind(this)}
-                        id="email"
-                        name="email"
-                        placeholder="E-mail"
-                    />
-                    <span>{validation.email.message}</span>
-                </div>
-                <div>
-                    <label htmlFor="date">Date</label>
-                    <input type="date"
-                        id="date"
-                        name="date"
-                        placeholder="E-mail"
-                        onChange={this.updateSubmission.bind(this)}
-                    />
-                </div>
-
-                <button onClick={this.handleFormSubmit}>
-                    Submit
-                </button>
-            </form>
+            </nav>
         )
     }
 }
