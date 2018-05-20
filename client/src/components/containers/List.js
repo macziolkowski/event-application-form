@@ -3,7 +3,7 @@ import UserListItem from '../presentation/UserListItem';
 import {connect} from 'react-redux';
 import {fetchUsers} from '../../actions/actions';
 
-class List extends Component {
+export class List extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchUsers());

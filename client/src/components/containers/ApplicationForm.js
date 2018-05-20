@@ -6,7 +6,7 @@ import FormValidator from './FormValidator';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
-class ApplicationForm extends Component {
+export class ApplicationForm extends Component {
 
     constructor() {
         super();
