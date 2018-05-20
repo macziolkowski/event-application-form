@@ -1,11 +1,14 @@
 Simple application form.
 You have to run 'npm install' command in both folders: 'Client' and 'Server'.
-To run type command:
+To run type command in "Client" folder:
 ```
 npm start
 ```
-in "Client" folder. To run the server type:
+To run the server open another console and type in "Server" folder:
 ```
 nodemon
 ```
-in "Server" folder.
+To run tests use below commands:
+```
+npm run test:unit
+```
