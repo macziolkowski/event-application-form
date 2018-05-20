@@ -95,7 +95,7 @@ class ApplicationForm extends Component {
         return (
             <nav className="navbar navbar-light pt-4 border-bottom bg-light">
                 <div className="container">
-                    <div className="row">
+                    <div>
                         <form className="form-inline">
                             <div className='mr-sm-2'>
                                 <input type="text"
