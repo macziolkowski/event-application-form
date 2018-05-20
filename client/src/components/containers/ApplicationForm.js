@@ -92,6 +92,8 @@ export class ApplicationForm extends Component {
                         this.validator.validate(this.state.submission) :
                         this.state.submission.validation
 
+        const today = new Date();
+
         return (
             <nav className="navbar navbar-light pt-4 border-bottom bg-light">
                 <div className="container">
@@ -134,7 +136,13 @@ export class ApplicationForm extends Component {
                                 </small>
                             </div>
                             <div className='mr-sm-2'>
-                                <DayPickerInput onDayChange={this.handleDayChange.bind(this)}/>
+                                <DayPickerInput
+                                    onDayChange={this.handleDayChange.bind(this)}
+                                    dayPickerProps={{
+                                        disabledDays: {before: today}
+                                    }}
+                                    value={today}
+                                />
                                 <small className="form-text text-danger alert-box">
                                 </small>
                             </div>
