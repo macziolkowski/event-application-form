@@ -43,7 +43,7 @@ export class ApplicationForm extends Component {
                 firstName: '',
                 lastName: '',
                 email: '',
-                date: '',
+                date: new Date(),
                 validation: this.validator.valid()
             }
         }

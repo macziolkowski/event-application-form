@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class UserListItem extends Component {
+
     render () {
+        const d = this.props.data.date.toString().slice(0, 10);
+
         return (
             <tr>
                 <td>{this.props.data.firstName}</td>
                 <td>{this.props.data.lastName}</td>
                 <td>{this.props.data.email}</td>
-                <td>{this.props.data.date}</td>
+                <td>{d}</td>
             </tr>
         )
     }
