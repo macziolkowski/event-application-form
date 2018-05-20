@@ -63,12 +63,10 @@ class ApplicationForm extends Component {
     }
 
     handleDayChange(day) {
-        console.log(day);
         this.setState({
-            submission: Object.assign({}, this.state.submission, {date : day})
+            submission: Object.assign({}, this.state.submission, {date : day},
+            () => {console.log(this.state.submission)})
         });
-
-        console.log(this.state.submission);
     }
 
     handleFormSubmit = event => {
@@ -78,8 +76,6 @@ class ApplicationForm extends Component {
         this.setState({validation});
         this.submitted = true;
 
-        console.log(validation);
-
         if (validation.isValid) {
             this.submitSubmission();
         }
@@ -88,6 +84,7 @@ class ApplicationForm extends Component {
     submitSubmission() {
         this.props.dispatch(submitUser(this.state.submission));
         this.props.history.push("/");
+        window.location.reload();
     }
 
     render () {
@@ -98,53 +95,58 @@ class ApplicationForm extends Component {
         return (
             <nav className="navbar navbar-light pt-4 border-bottom bg-light">
                 <div className="container">
-                    <a className="navbar-brand text-primary">Registration</a>
-                    <form className="form-inline">
-                        <div className='mr-sm-2'>
-                            <input type="text"
-                                id="firstName"
-                                name="firstName"
-                                className="form-control"
-                                placeholder="First name"
-                                onChange={this.updateSubmission.bind(this)}
-                            />
-                            <small className="form-text text-danger alert-box">
-                                {validation.firstName.message}
-                            </small>
-                        </div>
-                        <div className='mr-sm-2'>
-                            <input type="text"
-                                id="lastName"
-                                name="lastName"
-                                className="form-control"
-                                placeholder="Last name"
-                                onChange={this.updateSubmission.bind(this)}
-                            />
-                            <small className="form-text text-danger alert-box">
-                                {validation.lastName.message}
-                            </small>
-                        </div>
-                        <div className='mr-sm-2'>
-                            <input type="email"
-                                onChange={this.updateSubmission.bind(this)}
-                                id="email"
-                                name="email"
-                                className="form-control"
-                                placeholder="E-mail"
-                            />
-                            <small className="form-text text-danger alert-box">
-                                {validation.email.message}
-                            </small>
-                        </div>
-                        <div className='mr-sm-2'>
-                            <DayPickerInput onDayChange={this.handleDayChange.bind(this)}/>
-                            <small className="form-text text-danger alert-box">
-                            </small>
-                        </div>
-                        <button className="btn btn-outline-primary" onClick={this.handleFormSubmit}>
-                            Submit
-                        </button>
-                    </form>
+                    <div className="row">
+                        <form className="form-inline">
+                            <div className='mr-sm-2'>
+                                <input type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    className="form-control form-control-sm"
+                                    placeholder="First name"
+                                    onChange={this.updateSubmission.bind(this)}
+                                />
+                                <small className="form-text text-danger alert-box">
+                                    {validation.firstName.message}
+                                </small>
+                            </div>
+                            <div className='mr-sm-2'>
+                                <input type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    className="form-control form-control-sm"
+                                    placeholder="Last name"
+                                    onChange={this.updateSubmission.bind(this)}
+                                />
+                                <small className="form-text text-danger alert-box">
+                                    {validation.lastName.message}
+                                </small>
+                            </div>
+                            <div className='mr-sm-2'>
+                                <input type="email"
+                                    onChange={this.updateSubmission.bind(this)}
+                                    id="email"
+                                    name="email"
+                                    className="form-control form-control-sm"
+                                    placeholder="E-mail"
+                                />
+                                <small className="form-text text-danger alert-box">
+                                    {validation.email.message}
+                                </small>
+                            </div>
+                            <div className='mr-sm-2'>
+                                <DayPickerInput onDayChange={this.handleDayChange.bind(this)}/>
+                                <small className="form-text text-danger alert-box">
+                                </small>
+                            </div>
+                            <div>
+                                <button className="btn btn-sm btn-outline-primary" onClick={this.handleFormSubmit}>
+                                    Submit
+                                </button>
+                                <small className="form-text alert-box">
+                                </small>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </nav>
         )
