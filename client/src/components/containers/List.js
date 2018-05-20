@@ -28,7 +28,12 @@ export class List extends Component {
                     </thead>
                     <tbody>
                         {(this.props.users.length > 0) ? userItems
-                        : <tr><td>There are no participants enrolled</td></tr>}
+                        : <tr>
+                            <td>There are no participants enrolled</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>}
                     </tbody>
                 </table>
             </div>
