@@ -8,7 +8,7 @@ To run the server open another console and type in "Server" folder:
 ```
 nodemon
 ```
-To run tests use below commands:
+To run tests use below command in "Client" folder:
 ```
 npm run test:unit
 ```
