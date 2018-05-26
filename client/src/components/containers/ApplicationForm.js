@@ -59,13 +59,12 @@ export class ApplicationForm extends Component {
         updatedSubmission[event.target.id] = event.target.value;
         this.setState({
             submission: updatedSubmission
-        })
+        });
     }
 
     handleDayChange(day) {
         this.setState({
-            submission: Object.assign({}, this.state.submission, {date : day},
-            () => {console.log(this.state.submission)})
+            submission: Object.assign({}, this.state.submission, {date : day})
         });
     }
 
@@ -102,7 +101,6 @@ export class ApplicationForm extends Component {
                             <div className='mr-sm-2'>
                                 <input type="text"
                                     id="firstName"
-                                    name="firstName"
                                     className="form-control form-control-sm"
                                     placeholder="First name"
                                     onChange={this.updateSubmission.bind(this)}
@@ -114,7 +112,6 @@ export class ApplicationForm extends Component {
                             <div className='mr-sm-2'>
                                 <input type="text"
                                     id="lastName"
-                                    name="lastName"
                                     className="form-control form-control-sm"
                                     placeholder="Last name"
                                     onChange={this.updateSubmission.bind(this)}
@@ -127,16 +124,16 @@ export class ApplicationForm extends Component {
                                 <input type="email"
                                     onChange={this.updateSubmission.bind(this)}
                                     id="email"
-                                    name="email"
                                     className="form-control form-control-sm"
                                     placeholder="E-mail"
                                 />
-                                <small className="form-text text-danger alert-box">
+                                <small id='emailAlert' className="form-text text-danger alert-box">
                                     {validation.email.message}
                                 </small>
                             </div>
                             <div className='mr-sm-2'>
                                 <DayPickerInput
+                                    id="date"
                                     onDayChange={this.handleDayChange.bind(this)}
                                     dayPickerProps={{
                                         disabledDays: {before: today}
@@ -147,7 +144,7 @@ export class ApplicationForm extends Component {
                                 </small>
                             </div>
                             <div>
-                                <button className="btn btn-sm btn-outline-primary" onClick={this.handleFormSubmit}>
+                                <button id="submit" className="btn btn-sm btn-outline-primary" onClick={this.handleFormSubmit}>
                                     Submit
                                 </button>
                                 <small className="form-text alert-box">
